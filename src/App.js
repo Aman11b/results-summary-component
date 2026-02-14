@@ -35,9 +35,35 @@ export default function App() {
 }
 
 function Result() {
-  return <h2>Result component</h2>;
+  return (
+    <div className="result">
+      <h2>Your Result</h2>
+      <div>
+        <span>76</span>
+        <span>of 100</span>
+      </div>
+      <h1>Great</h1>
+      <p>
+        You scored higher than 65% of the people who have taken these tests.
+      </p>
+    </div>
+  );
 }
 
 function Summary() {
-  return <h2>Summary component</h2>;
+  return (
+    <div className="summary">
+      <h2>Summary</h2>
+      <div className="records">
+        {data.map((data) => (
+          <div>
+            <img src={data.icon} alt={data.category} />
+            <p>{data.category}</p>
+            <span>{data.score}/100</span>
+          </div>
+        ))}
+      </div>
+      <button> Continue</button>
+    </div>
+  );
 }
