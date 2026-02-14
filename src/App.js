@@ -4,24 +4,28 @@ const data = [
     category: "Reaction",
     score: 80,
     icon: "./assets/images/icon-reaction.svg",
+    color: "red",
   },
   {
     id: 2,
     category: "Memory",
     score: 92,
     icon: "./assets/images/icon-memory.svg",
+    color: "yellow",
   },
   {
     id: 3,
     category: "Verbal",
     score: 61,
     icon: "./assets/images/icon-verbal.svg",
+    color: "teal",
   },
   {
     id: 4,
     category: "Visual",
     score: 72,
     icon: "./assets/images/icon-visual.svg",
+    color: "blue",
   },
 ];
 
@@ -38,8 +42,8 @@ function Result() {
   return (
     <div className="result">
       <h2>Your Result</h2>
-      <div>
-        <span>76</span>
+      <div className="result-circle">
+        <span className="result-score">76</span>
         <span>of 100</span>
       </div>
       <h1>Great</h1>
@@ -56,14 +60,25 @@ function Summary() {
       <h2>Summary</h2>
       <div className="records">
         {data.map((data) => (
-          <div>
-            <img src={data.icon} alt={data.category} />
-            <p>{data.category}</p>
-            <span>{data.score}/100</span>
-          </div>
+          <Category data={data} />
         ))}
       </div>
       <button> Continue</button>
+    </div>
+  );
+}
+
+function Category({ data }) {
+  return (
+    <div className={`category bg-${data.color}`}>
+      <div className="icon-category">
+        <img src={data.icon} alt={data.category} />
+        <p className={`f-${data.color}`}>{data.category}</p>
+      </div>
+      <p>
+        {data.score}
+        <span> / 100</span>
+      </p>
     </div>
   );
 }
