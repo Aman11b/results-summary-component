@@ -157,6 +157,7 @@ ol[role="list"] {
 body {
   font-family: "Hanken Grotesk", sans-serif;
   height: 100vh;
+  width: 100vw;
 
   background-color: var(--Pale-blue);
 
@@ -167,15 +168,15 @@ body {
 .App {
   display: flex;
   flex-direction: row;
-  height: 520px;
-  width: 680px;
+  height: fit-content;
+  width: fit-content;
 
   background-color: var(--White);
 
   border-radius: 2rem;
 
   .result {
-    padding: 2rem 3rem;
+    padding: 2rem;
     border-radius: 2rem;
 
     display: flex;
@@ -201,6 +202,7 @@ body {
     p {
       font-weight: var(--fw-700);
       text-align: center;
+      max-width: 30ch;
     }
 
     .result-circle {
@@ -236,6 +238,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+
+    gap: 1rem;
 
     padding: 2rem 2rem;
 
@@ -308,10 +312,55 @@ body {
       font-size: 20px;
       font-weight: var(--fw-700);
     }
+
+    button:hover {
+      background: linear-gradient(
+        to top,
+        var(--Light-royal-blue-background),
+        var(--Light-slate-blue-background)
+      );
+      color: var(--White);
+    }
   }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 800px) {
+  body {
+    align-items: flex-start;
+  }
+  .App {
+    flex-direction: column;
+    height: 100vh;
+
+    border-radius: 0;
+
+    .result {
+      width: 100%;
+      padding: 2;
+      border-radius: 0;
+      border-bottom-left-radius: 3rem;
+      border-bottom-right-radius: 3rem;
+
+      gap: 1rem;
+
+      .result-circle {
+        height: 150px;
+      }
+
+      p {
+        max-width: 80%;
+      }
+    }
+
+    .summary {
+      width: 100%;
+      gap: 10px;
+
+      h2 {
+        align-self: center;
+      }
+    }
+  }
 }
 
 @media only screen and (min-width: 764px) and (max-width: 1024px) {
